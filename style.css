@@ -1,0 +1,505 @@
+/* ============================================================
+   TABLELECTICS — style.css
+   Mobile-first, minimalist blue-and-white design.
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Brand palette */
+  --color-primary:        #2563eb;
+  --color-primary-dark:   #1d4ed8;
+  --color-primary-light:  #eff6ff;
+
+  /* Neutrals */
+  --color-bg:             #f8fafc;
+  --color-surface:        #ffffff;
+  --color-border:         #e2e8f0;
+  --color-text:           #1e293b;
+  --color-text-muted:     #64748b;
+  --color-shadow:         rgba(0, 0, 0, 0.06);
+
+  /* Validation highlight colours (accessible contrast on white) */
+  --color-empty-bg:       #fef9c3;   /* yellow */
+  --color-empty-border:   #ca8a04;
+  --color-empty-text:     #713f12;
+
+  --color-invalid-bg:     #fee2e2;   /* red */
+  --color-invalid-border: #dc2626;
+  --color-invalid-text:   #7f1d1d;
+
+  --color-duplicate-bg:   #ede9fe;   /* purple */
+  --color-duplicate-border:#7c3aed;
+  --color-duplicate-text: #3b0764;
+
+  --color-bad-nrp-bg:     #ffedd5;   /* orange */
+  --color-bad-nrp-border: #ea580c;
+  --color-bad-nrp-text:   #7c2d12;
+
+  /* Spacing & radii */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --space-1:    0.25rem;
+  --space-2:    0.5rem;
+  --space-3:    0.75rem;
+  --space-4:    1rem;
+  --space-6:    1.5rem;
+  --space-8:    2rem;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Utility ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--space-6) 0;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  opacity: 0.85;
+  margin-top: var(--space-1);
+  font-weight: 400;
+}
+
+/* ---------- Main ---------- */
+main {
+  flex: 1;
+  padding: var(--space-8) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 1px 4px var(--color-shadow);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-primary-light);
+}
+
+/* ---------- Fields ---------- */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.paste-area {
+  width: 100%;
+  font-family: "SF Mono", "Consolas", "Menlo", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.paste-area:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ---------- File Upload ---------- */
+.file-upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.file-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.file-upload-btn:hover,
+.file-upload-btn:focus {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  outline: none;
+}
+
+.file-name {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Buttons ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border-color: #bfdbfe;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: #dbeafe;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus {
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+}
+
+/* ---------- Legend ---------- */
+.legend-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.legend-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  border: 1.5px solid transparent;
+}
+
+.swatch-empty     { background: var(--color-empty-bg);     border-color: var(--color-empty-border); }
+.swatch-invalid   { background: var(--color-invalid-bg);   border-color: var(--color-invalid-border); }
+.swatch-duplicate { background: var(--color-duplicate-bg); border-color: var(--color-duplicate-border); }
+.swatch-bad-nrp   { background: var(--color-bad-nrp-bg);   border-color: var(--color-bad-nrp-border); }
+
+/* ---------- Results Table ---------- */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.results-table thead {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.results-table th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.results-table td {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tbody tr:nth-child(even) {
+  background: var(--color-bg);
+}
+
+.results-table tbody tr:hover {
+  background: var(--color-primary-light);
+}
+
+/* Row number column */
+.col-row-num {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  user-select: none;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* ---------- Cell Highlight Classes ---------- */
+.cell-empty {
+  background: var(--color-empty-bg) !important;
+  color: var(--color-empty-text) !important;
+  font-style: italic;
+  border: 1.5px solid var(--color-empty-border) !important;
+}
+
+.cell-invalid {
+  background: var(--color-invalid-bg) !important;
+  color: var(--color-invalid-text) !important;
+  font-weight: 600;
+  border: 1.5px solid var(--color-invalid-border) !important;
+}
+
+.cell-duplicate {
+  background: var(--color-duplicate-bg) !important;
+  color: var(--color-duplicate-text) !important;
+  font-weight: 600;
+  border: 1.5px solid var(--color-duplicate-border) !important;
+}
+
+.cell-bad-nrp {
+  background: var(--color-bad-nrp-bg) !important;
+  color: var(--color-bad-nrp-text) !important;
+  font-weight: 600;
+  border: 1.5px solid var(--color-bad-nrp-border) !important;
+}
+
+/* NRP column can carry multiple issues — bad-nrp takes priority, then duplicate */
+.cell-bad-nrp.cell-duplicate {
+  background: var(--color-bad-nrp-bg) !important;
+  border-color: var(--color-bad-nrp-border) !important;
+}
+
+/* ---------- Column Report ---------- */
+#report-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.report-item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.report-item.report-ok {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #14532d;
+}
+
+.report-item.report-warn {
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  color: #7c2d12;
+}
+
+.report-item strong {
+  font-weight: 700;
+}
+
+.report-nrp-list {
+  font-family: "SF Mono", "Consolas", "Menlo", monospace;
+  font-size: 0.8125rem;
+  word-break: normal;
+}
+
+/* Each individual NRP token must never be broken across two lines. */
+.nrp-token {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: "SF Mono", "Consolas", "Menlo", monospace;
+  font-size: 0.8125rem;
+}
+
+.report-all-ok {
+  padding: var(--space-4);
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: var(--radius-md);
+  color: #14532d;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: var(--space-4) 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+/* ---------- Responsive Tweaks (≥ 600 px) ---------- */
+@media (min-width: 600px) {
+  .logo {
+    font-size: 2rem;
+  }
+
+  .legend-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .actions {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 800px) {
+  main {
+    padding: var(--space-8) 0;
+  }
+}
