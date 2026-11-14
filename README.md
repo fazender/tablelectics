@@ -20,4 +20,4 @@ Cara Menggunakan
 HTML, CSS, dan JavaScript tanpa framework. 
 
 
-Capstone Project – Hacktiv8 x IBM SkillsBuild
+Capstone Project – Hacktiv8 x IBM SkillsBuild 
