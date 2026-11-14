@@ -17,7 +17,7 @@ Cara Menggunakan
 3. Klik 'Periksa'.
 4. Untuk mencoba, klik 'Muat Data Contoh'.
 
-HTML, CSS, dan JavaScript tanpa framework. Dibangun dengan bantuan IBM Bob sebagai AI agent.
+HTML, CSS, dan JavaScript tanpa framework. 
 
 
 Capstone Project – Hacktiv8 x IBM SkillsBuild
